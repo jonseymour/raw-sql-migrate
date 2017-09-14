@@ -25,3 +25,6 @@ v0.3.4
 ======
 * Removed tests from package source
 
+v0.3.5
+======
+* Fix issue with migration numbers ending in zero
