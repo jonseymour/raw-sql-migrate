@@ -218,7 +218,7 @@ class DatabaseHelper(object):
             rows = database_api.execute(sql, params=query_params, return_result='fetchall')
             if rows:
                 name = rows[0][0]
-                result = int(name.split('_')[0].strip('0'))
+                result = int(name.split('_')[0].lstrip('0'))
 
         return result
 
