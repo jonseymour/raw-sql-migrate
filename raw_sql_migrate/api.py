@@ -33,17 +33,17 @@ class Api(object):
         rsm_config.set_config_instance(config_instance)
 
         try:
-            database_api_module = import_module(config.engine)
+            database_api_module = import_module(config_instance.engine)
             database_api.set_database_api(database_api_module.DatabaseApi(
-                config.host,
-                config.port,
-                config.name,
-                config.user,
-                config.password,
-                config.additional_connection_params
+                config_instance.host,
+                config_instance.port,
+                config_instance.name,
+                config_instance.user,
+                config_instance.password,
+                config_instance.additional_connection_params
             ))
         except (ImportError, AttributeError, ):
-            raise IncorrectDbBackendException(u'Failed to import given database engine: %s' % config.engine)
+            raise IncorrectDbBackendException(u'Failed to import given database engine: %s' % config_instance.engine)
 
     @staticmethod
     def _create_migration_history_table_if_not_exists():
